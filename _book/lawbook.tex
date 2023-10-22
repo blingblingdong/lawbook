@@ -1,0 +1,691 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={民法之書},
+  pdfauthor={董宸賓},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{民法之書}
+\author{董宸賓}
+\date{2023-10-22}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{about}{%
+\chapter{About}\label{about}}
+
+This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports; for example, a math equation \(a^2 + b^2 = c^2\).
+
+\hypertarget{usage}{%
+\section{Usage}\label{usage}}
+
+Each \textbf{bookdown} chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter \emph{must} start with a first-level heading: \texttt{\#\ A\ good\ chapter}, and can contain one (and only one) first-level heading.
+
+Use second-level and higher headings within chapters like: \texttt{\#\#\ A\ short\ section} or \texttt{\#\#\#\ An\ even\ shorter\ section}.
+
+The \texttt{index.Rmd} file is required, and is also your first book chapter. It will be the homepage when you render the book.
+
+\hypertarget{render-book}{%
+\section{Render book}\label{render-book}}
+
+You can render the HTML version of this example book without changing anything:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the \textbf{Build} pane in the RStudio IDE, and
+\item
+  Click on \textbf{Build Book}, then select your output format, or select ``All formats'' if you'd like to use multiple formats from the same book source files.
+\end{enumerate}
+
+Or build the book from the R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+To render this example to PDF as a \texttt{bookdown::pdf\_book}, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
+
+\hypertarget{preview-book}{%
+\section{Preview book}\label{preview-book}}
+
+As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in ``Preview book'', or from the R console:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{serve\_book}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux6b0aux5229ux5ba2ux9ad4ux4ee5ux7269ux70baux4e2dux5fc3}{%
+\chapter{權利客體―以「物」為中心}\label{ux6b0aux5229ux5ba2ux9ad4ux4ee5ux7269ux70baux4e2dux5fc3}}
+
+\hypertarget{ux6b0aux529bux7684ux57faux672cux6982ux5ff5}{%
+\section{權力的基本概念}\label{ux6b0aux529bux7684ux57faux672cux6982ux5ff5}}
+
+權利
+
+權利主體
+
+權利客體
+
+享受特定利益的力量
+
+得享有權利者
+（擁有權利能力者)
+
+權利支配的對象
+
+\hypertarget{ux7269ux6b0aux7684ux57faux672cux539fux5247ux4e00ux7269ux4e00ux6b0a}{%
+\section{物權的基本原則：一物一權}\label{ux7269ux6b0aux7684ux57faux672cux539fux5247ux4e00ux7269ux4e00ux6b0a}}
+
+\begin{itemize}
+\item
+  一個物權支配一個特定的物
+
+  例：書包中的民法總則，刑法總則與小六法共有三個所有權
+\item
+  物權抽象，物是具體的
+
+  不代表無體物不是物
+\item
+  以法律行為使權力發生變動時，是物權改變
+
+  例：買一隻羊，不是羊此物發生改變，是的物權改變
+\end{itemize}
+
+\pagebreak
+
+\hypertarget{ux7269ux7684ux5224ux65b7}{%
+\section{物的判斷：}\label{ux7269ux7684ux5224ux65b7}}
+
+\hypertarget{ux4e0dux4ee5ux6709ux9ad4ux7269ux70baux9650ux4ea6ux53efux70baux7121ux9ad4ux7269}{%
+\subsection{1.不以有體物為限，亦可為無體物}\label{ux4e0dux4ee5ux6709ux9ad4ux7269ux70baux9650ux4ea6ux53efux70baux7121ux9ad4ux7269}}
+
+有體物
+
+無體物
+
+外觀上具備一定之形體
+
+沒有一定之形體
+
+車子、房屋、羊
+
+氣體、液體、電力
+
+\hypertarget{ux7279ux4f8bux8a0eux8ad6ux96fbux5b50ux6a94ux6848ux662fux5426ux70baux7269}{%
+\subsection{特例討論：電子檔案是否為物？}\label{ux7279ux4f8bux8a0eux8ad6ux96fbux5b50ux6a94ux6848ux662fux5426ux70baux7269}}
+
+\begin{itemize}
+\tightlist
+\item
+  正方：從權利主體的保護利義論
+\end{itemize}
+
+將其納入物的範圍，使其能成為侵權行為之客體。例如將他人之電子檔案以木馬病毒摧毀。
+
+\begin{itemize}
+\tightlist
+\item
+  反方：比照德國法，採有體物之觀念
+\end{itemize}
+
+電子檔案僅屬於精神之產物(類無體財產權)，但其交易仍可依435條準用物之買賣或租賃之規定
+
+\hypertarget{ux53efux53d7ux4ebaux985eux652fux914d}{%
+\subsection{2.可受人類支配}\label{ux53efux53d7ux4ebaux985eux652fux914d}}
+
+\begin{itemize}
+\item
+  特指具排他性的支配，物權得直接支配標的物
+
+  \begin{itemize}
+  \item
+    支配：是指依權利人之意思，對物管領處分。例外：愛情、時間、資訊不能被支配。
+  \item
+    直接:支配標的物時，他人之意思或行為不能介入。
+    例外資訊、知識等不能防止獲取。(但仍可以無體財產權的形式保護)。
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux975eux4ebaux683cux6027}{%
+\subsection{3.非人格性}\label{ux975eux4ebaux683cux6027}}
+
+\begin{itemize}
+\item
+  因人為權利主體，人之身體乃人格權的一部分
+\item
+  但離開身體之器官、頭髮等依然可以為物
+
+  \begin{itemize}
+  \item
+    其為不通融物，即不可交易買賣(民72)
+  \item
+    僅得在一定條件下贈與(人體器官移植條例6)
+  \end{itemize}
+\end{itemize}
+
+\pagebreak
+
+\hypertarget{ux9aa8ux7070ux5c4dux9ad4ux4f7fux5426ux70baux7269}{%
+\subsection{骨灰、屍體使否為物}\label{ux9aa8ux7070ux5c4dux9ad4ux4f7fux5426ux70baux7269}}
+
+\begin{itemize}
+\item
+  屍體：多數學說認為屍體為物，構成遺產，應為繼承人所公同共有， 其所有權內涵與其他財產權之所有權不同，應以屍體之埋葬、管理、祭祀及供養為目的，不得自由使用、收益及處分，拋棄繼承之效力不及於此。
+\item
+  骨灰：與屍體類型相似，使用統一解釋
+\item
+  身體之人工部分：恢復最原始物之狀態，其是否分離因由繼承者決定，由繼承者獲得處分權
+\item
+  木乃伊或骷髏：得為權利客體
+\end{itemize}
+
+\href{\%22https://tyd.judicial.gov.tw\%22}{臺灣桃園地方法院92年度國字第4號判決}
+
+\begin{quote}
+骨灰是否為物，法無明文，惟參酌多數學說認為屍體為物，構成遺產，應為繼承人所公同共有， 其所有權內涵與其他財產權之所有權不同，應以屍體之埋葬、管理、祭祀及供養為目的，不得自由 使用、收益及處分，本院認骨灰性質與屍體相近，應作同一解釋較符法理及我國社會上一般觀念。 故被告抗辯本件原告主張寄放於納骨塔之骨灰應屬原告及其他繼承人所繼承遺產之一部，屬全體繼 承人公同共有乙節，應屬可採。
+\end{quote}
+
+\hypertarget{ux5b58ux5728ux7368ux7acbux6027}{%
+\subsection{4.存在獨立性}\label{ux5b58ux5728ux7368ux7acbux6027}}
+
+\begin{itemize}
+\item
+  必須存在一定之空間、範圍
+  clear
+  流動的河流，空中的閃電
+  check
+  經過登記後的不動產
+\item
+  必須獨立個必存在，數物之重要成份而不得分離者，不得作為物權之客體，即一物一權
+  clear
+  土地上之樹木之果實(但得作為買賣之標的)
+\end{itemize}
+
+\hypertarget{ux53efux6effux8db3ux4ebaux985eux751fux6d3bux6240ux9700}{%
+\subsection{5.可滿足人類生活所需}\label{ux53efux6effux8db3ux4ebaux985eux751fux6d3bux6240ux9700}}
+
+\begin{itemize}
+\tightlist
+\item
+  必須對人類生活有特殊意義或功能
+  clear
+  一粒米、湖裡之微生物
+  check
+  雕刻過的米、專供研究而培養成的微生物
+\end{itemize}
+
+\pagebreak
+
+\hypertarget{ux7269ux7684ux7a2eux985e}{%
+\section{物的種類}\label{ux7269ux7684ux7a2eux985e}}
+
+\hypertarget{ux52d5ux7522ux8207ux4e0dux52d5ux7522}{%
+\subsection{1.動產與不動產}\label{ux52d5ux7522ux8207ux4e0dux52d5ux7522}}
+
+\hypertarget{ux5340ux5225ux6a19ux6e96}{%
+\subsection{區別標準}\label{ux5340ux5225ux6a19ux6e96}}
+
+\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=66}{民66：不動產}
+
+\begin{quote}
+1.稱不動產者，謂土地及其定著物。
+2.不動產之出產物，尚未分離者，為該不動產之部分。
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  定著物定義
+\end{itemize}
+
+最高法院63年第六次民庭庭推總會議決議(一)
+
+\begin{quote}
+民法第六十六條第一項所謂定著物，係指非土地之構成部分，繼續附著於土地，而達一定經濟上目的，不易移動其所在之物而言。凡屋頂尚未完全完工之房屋，其已足避風雨，可達經濟上使用之目的者，即屬土地之定著物，買受此種房屋之人，乃係基於法律行為，自須辦理移轉登記，始能取得所有權。
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  爛尾樓，違建：皆符合
+\end{itemize}
+
+\href{https://cons.judicial.gov.tw/docdata.aspx?fid=100\&id=310274}{釋字93號}
+
+\begin{itemize}
+\tightlist
+\item
+  輕便軌道：符合
+\end{itemize}
+
+\begin{quote}
+輕便軌道除係臨時敷設者外，凡繼續附著於土地而達其一定經濟上之目的者，應認為不動產。
+\end{quote}
+
+\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=67}{民67：動產}
+
+\begin{quote}
+稱動產者，為前條所稱不動產以外之物。
+\end{quote}
+
+\hypertarget{ux5340ux5225ux5be6ux76caux6240ux6709ux6b0aux6b0aux5229ux8b8aux52d5ux4e4bux65b9ux6cd5ux4e0dux540c}{%
+\subsection{區別實益：所有權權利變動之方法不同}\label{ux5340ux5225ux5be6ux76caux6240ux6709ux6b0aux6b0aux5229ux8b8aux52d5ux4e4bux65b9ux6cd5ux4e0dux540c}}
+
+\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=67}{民758：不動產必須要書面登記}
+
+\begin{quote}
+1.不動產物權，依法律行為而取得、設定、喪失及變更者，非經登記，不生效力。
+2.前項行為，應以書面為之。
+\end{quote}
+
+為何違章建築、爛尾樓難以處理=\textgreater 成為未登記之不動產，亦難以轉移，變更
+
+\hypertarget{ux6c11ux6cd5ux4e4bux89e3ux91cbux8207ux9069ux7528}{%
+\chapter{民法之解釋與適用}\label{ux6c11ux6cd5ux4e4bux89e3ux91cbux8207ux9069ux7528}}
+
+\hypertarget{ux6cd5ux6e90ux9069ux7528ux9806ux5e8f}{%
+\subsection{法源適用順序}\label{ux6cd5ux6e90ux9069ux7528ux9806ux5e8f}}
+
+\includegraphics[width=0.8\linewidth]{www/法源適用}
+
+\hypertarget{ux6c11ux6cd512}{%
+\subsection{\texorpdfstring{\href{https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=B0000001}{民法1、2}}{民法1、2}}\label{ux6c11ux6cd512}}
+
+\begin{quote}
+第一條：民事，法律所未規定者，依習慣；無習慣者，依法理。
+第二條：民事所適用之習慣，以不背於公共秩序或善良風俗者為限。
+\end{quote}
+
+\pagebreak
+
+\hypertarget{ux6cd5ux6e90}{%
+\section{法源}\label{ux6cd5ux6e90}}
+
+\hypertarget{ux5b9aux7fa9}{%
+\subsection{定義}\label{ux5b9aux7fa9}}
+
+\begin{itemize}
+\tightlist
+\item
+  限縮：廣義上之法律
+\item
+  廣義：判決之基礎-\textgreater 法律＋契約(相對人中的法律)
+\end{itemize}
+
+\hypertarget{ux5ee3ux7fa9ux4e4bux6cd5ux5f8b}{%
+\section{廣義之法律}\label{ux5ee3ux7fa9ux4e4bux6cd5ux5f8b}}
+
+\hypertarget{ux6c11ux6cd5ux53caux6c11ux4e8bux7279ux5225ux6cd5}{%
+\subsection{民法及民事特別法}\label{ux6c11ux6cd5ux53caux6c11ux4e8bux7279ux5225ux6cd5}}
+
+\hypertarget{ux884cux653fux6cd5ux898f}{%
+\subsection{行政法規}\label{ux884cux653fux6cd5ux898f}}
+
+\begin{itemize}
+\item
+  \href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=71}{民71}：公法與私法之過度法律
+
+  \begin{quote}
+  法律行為，違反強制或禁止之規定者，無效。但其規定並不以之為無效者，不在此限。
+  \end{quote}
+\item
+  行政法影響民法規定：\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=K0040013\&flno=15}{道交安全條例15}
+
+  \begin{quote}
+  汽車新領牌照應申請登記。
+  \end{quote}
+
+  民法之不動產無需登記
+\end{itemize}
+
+\hypertarget{ux61b2ux6cd5ux4e0dux5f97ux76f4ux63a5ux63f4ux5f15}{%
+\subsection{憲法：不得直接援引}\label{ux61b2ux6cd5ux4e0dux5f97ux76f4ux63a5ux63f4ux5f15}}
+
+\begin{itemize}
+\item
+  \href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=72}{民72}等過渡性法條
+
+  \begin{quote}
+  法律行為，有背於公共秩序或善良風俗者，無效。
+  \end{quote}
+\item
+  做合憲性解釋
+\end{itemize}
+
+\hypertarget{ux570bux969bux6cd5ux8207ux81eaux6cbbux6cd5}{%
+\subsection{國際法與自治法}\label{ux570bux969bux6cd5ux8207ux81eaux6cbbux6cd5}}
+
+\pagebreak
+
+\hypertarget{ux6cd5ux5f8bux6240ux898fux5b9aux4e4bux7fd2ux6163}{%
+\subsection{法律所規定之習慣}\label{ux6cd5ux5f8bux6240ux898fux5b9aux4e4bux7fd2ux6163}}
+
+\begin{itemize}
+\item
+  非指民法上之習慣，而是在法條裡有特別提及：\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=207}{民法207}
+
+  \begin{quote}
+  利息不得滾入原本再生利息。但當事人以書面約定，利息遲付逾一年後，經催告而不償還時，債權人得將遲付之利息滾入原本者，依其約定。
+  前項規定，如商業上另有習慣者，不適用之。
+  \end{quote}
+\end{itemize}
+
+\hypertarget{ux7fd2ux6163ux6cd5}{%
+\section{習慣法}\label{ux7fd2ux6163ux6cd5}}
+
+\hypertarget{ux7fd2ux6163ux6cd5ux56dbux8981ux4ef6}{%
+\subsection{習慣法四要件}\label{ux7fd2ux6163ux6cd5ux56dbux8981ux4ef6}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  多年慣行之事實2. 普通一般人之確信心3. 不違背善量風俗(民2)4. 通常有判決加以承認
+\end{enumerate}
+
+17年上字第613(已廢止)
+
+\begin{quote}
+習慣法之成立，須以多年慣行之事實及普通一般人之確信心為其基礎。
+\end{quote}
+
+\hypertarget{ux6cd5ux7406}{%
+\section{法理}\label{ux6cd5ux7406}}
+
+\hypertarget{ux4e00ux822cux6cd5ux5f8bux7684ux539fux5247}{%
+\subsection{一般法律的原則}\label{ux4e00ux822cux6cd5ux5f8bux7684ux539fux5247}}
+
+\begin{itemize}
+\item
+  公共利益、權利濫用、誠實信用
+\item
+  平等原則、舉輕明重、舉重明輕
+\end{itemize}
+
+\hypertarget{ux65b0ux5b9aux4e4bux6cd5ux5f8bux5236ux5b9aux4e2dux7684ux6cd5ux5f8bux5916ux570bux4e4bux6cd5ux5f8b}{%
+\subsection{新定之法律、制定中的法律、外國之法律}\label{ux65b0ux5b9aux4e4bux6cd5ux5f8bux5236ux5b9aux4e2dux7684ux6cd5ux5f8bux5916ux570bux4e4bux6cd5ux5f8b}}
+
+\pagebreak
+
+\hypertarget{ux5224ux4f8bux8207ux6c7aux8b70}{%
+\subsection{判例與決議}\label{ux5224ux4f8bux8207ux6c7aux8b70}}
+
+\begin{itemize}
+\tightlist
+\item
+  決議：最高法院及最高行政法院召開會議的方式來研討法律問題而作成的結果。
+\end{itemize}
+
+行政法院組織法第16條第3項（已廢止），目前不會再有任何決議，但可作為裁判參考
+
+\begin{quote}
+最高行政法院之裁判，其所持之法律見解，各庭間見解不一致者，於依第一項規定編為判例之前，應舉行院長、庭長、法官聯席會議，以決議統一其法律見解。
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  判例：最高法院、最高行政法院透過決議將指標性的裁判編撰而成，交給其他法院參考
+\end{itemize}
+
+\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=A0010053\&flno=57-1}{法院組織法§57條之1}
+
+\begin{quote}
+I 最高法院於中華⺠國一百零七年十二月七日本法修正施行前依法選編之判例，若無裁判全文可資查考者 ，應停止適用。
+II 未經前項規定停止適用之判例，其效力與未經選編為判例之最高法院裁判相同。
+\end{quote}
+
+\hypertarget{ux5224ux6c7aux8207ux5224ux4f8bux6709ux4f55ux554fux984c}{%
+\subsection{判決與判例有何問題}\label{ux5224ux6c7aux8207ux5224ux4f8bux6709ux4f55ux554fux984c}}
+
+\begin{itemize}
+\item
+  判決與法例並無所謂強制之效力，但因為其為最高法院所製成，下級法官會遵循其之規定。
+\item
+  又依司法院釋字第374號解釋，判決與決議都可以如命令性質向大法官申請違憲審查，使其近乎有命令之地位。
+\end{itemize}
+
+如此延伸出兩種問題：
+
+\begin{itemize}
+\item
+  將本質為抽象性的法規， 視為一般的抽象法規範來適用，將產生個案是否適用之疑異。
+\item
+  因決議與判例皆為最高法院僅透過決議而製成，又其被視為一般的抽象法規範來適用，恐有逾越司法權之虞。
+\end{itemize}
+
+\pagebreak
+
+\hypertarget{ux79c1ux6cd5ux95dcux4fc2ux57faux672cux7d50ux69cb}{%
+\section{私法關係基本結構}\label{ux79c1ux6cd5ux95dcux4fc2ux57faux672cux7d50ux69cb}}
+
+\hypertarget{ux95dcux4fc2ux7d50ux69cb}{%
+\subsection{關係結構}\label{ux95dcux4fc2ux7d50ux69cb}}
+
+\begin{itemize}
+\item
+  意義：由民事法行成、規範並能藉由其實現
+\item
+  內容：權利之得喪變更，至少一個權利為要素
+\item
+  變動：基本由當事人自由約定，例外加以限制。
+\end{itemize}
+
+x
+
+債權
+
+物權
+
+人格權
+
+身份權
+
+定義
+
+請求特定人為給付、不給付
+
+直接、排他性的支配標的物
+
+禁止他人侵害擠身人格尊嚴
+
+享受身份關係確保之權利
+
+財產權
+
+否
+
+否
+
+是
+
+是
+
+對世性
+
+相對權
+
+絕對權
+
+絕對權
+
+絕對權
+
+\begin{itemize}
+\item
+  財產權之特性：得轉移、繼承，又稱一生專屬性
+\item
+  對世性之特性：得以向第三主張權利內容。
+\end{itemize}
+
+x
+
+物權
+
+債權
+
+定義
+
+直接支配具排他性
+
+只存在特定人之間的權利
+
+取得
+
+原始取得繼受
+
+意定：契約153
+法定：無因(172)、不當(179)、侵權(184)
+
+消滅
+
+讓與、拋棄他人善意取得侵權破壞
+
+債務清償
+
+變更
+
+附合共有變更權利範圍
+
+債務物權化主、客、內容變更
+
+\hypertarget{ux50b5ux6b0aux7269ux6b0aux5316ux8cb7ux8ce3ux4e0dux7834ux79dfux8cc3}{%
+\subsection{債權物權化：買賣不破租賃}\label{ux50b5ux6b0aux7269ux6b0aux5316ux8cb7ux8ce3ux4e0dux7834ux79dfux8cc3}}
+
+某甲與某乙締結租屋契約(\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=421}{421})，雙方產生債權權。再契約尚未結束前，將房屋所有權讓與某丙(\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=758}{758})(\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=345}{345})，丙持有房屋的物權。此時，丙不得以物上返還權(\href{https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001\&flno=767}{767})將某乙趕出，租賃之契約依然有效。及買賣不破租賃。
+
+\begin{quote}
+民法§425 第 1 項：「出租人於租賃物交付後，承租人占有中，縱將其所有權讓與第三人，其租賃契約，對於受讓人仍繼續存在。」
+\end{quote}
+
+\hypertarget{ux6cd5ux5f8bux9069ux7528ux7684ux610fux7fa9}{%
+\section{法律適用的意義}\label{ux6cd5ux5f8bux9069ux7528ux7684ux610fux7fa9}}
+
+為何民法之適用有如此多的層級？其係因民事法庭不得以無法律無明文規定而拒絕審判。與此延伸出法官造法之概念
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
