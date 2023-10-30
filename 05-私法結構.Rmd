@@ -1,0 +1,81 @@
+# 私法關係基本結構
+
+## 關係結構
+
+- 意義：由民事法行成、規範並能藉由其實現
+
+- 內容：權利之得喪變更，至少一個權利為要素
+
+- 變動：基本由當事人自由約定，例外加以限制。
+
+<table>
+  <tr>
+    <th>x</th>
+    <th>債權</th>
+    <th>物權</th>
+    <th>人格權</th>
+    <th>身份權</th>
+  </tr>
+  <tr>
+    <td>定義</td>
+    <td>請求特定人為<br>給付、不給付</td>
+    <td>直接、排他性<br>的支配標的物</td>
+    <td>禁止他人侵害<br>擠身人格尊嚴</td>
+    <td>享受身份關係<br>確保之權利</td>
+  </tr>
+  <tr>
+    <td>財產權</td>
+    <td>否</td>
+    <td>否</td>
+    <td>是</td>
+    <td>是</td>
+  </tr>
+  <tr>
+    <td>對世性</td>
+    <td>相對權</td>
+    <td>絕對權</td>
+    <td>絕對權</td>
+    <td>絕對權</td>
+  </tr>
+</table>
+
+- 財產權之特性：得轉移、繼承，又稱<mark>一生專屬性</mark>
+
+- 對世性之特性：得以向第三主張權利內容。
+
+<table>
+  <tr>
+    <th>x</th>
+    <th>物權</th>
+    <th>債權</th>
+  </tr>
+  <tr>
+    <td>定義</td>
+    <td>直接支配<br>具排他性</td>
+    <td>只存在特定人<br>之間的權利</td>
+  </tr>
+  <tr>
+    <td>取得</td>
+    <td>原始取得<br>繼受</td>
+    <td>意定：契約153<br>
+    法定：無因(172)、不當(179)、侵權(184)
+    </td>
+  </tr>
+  <tr>
+    <td>消滅</td>
+    <td>讓與、拋棄<br>他人善意取得<br>侵權破壞</td>
+    <td>債務清償</td>
+  </tr>
+  <tr>
+    <td>變更</td>
+    <td>附合<br>共有變更權利範圍</td>
+    <td>債務物權化<br>主、客、內容變更</td>
+  </tr>
+</table>
+
+## 債權物權化：買賣不破租賃
+
+某甲與某乙締結租屋契約([421](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=421))，雙方產生債權權。再契約尚未結束前，將房屋所有權讓與某丙([758](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=758))([345](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=345))，丙持有房屋的物權。此時，丙不得以物上返還權([767](https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=767))將某乙趕出，租賃之契約依然有效。<br>及買賣不破租賃。
+
+> 民法§425 第 1 項：「出租人於租賃物交付後，承租人占有中，縱將其所有權讓與第三人，其租賃契約，對於受讓人仍繼續存在。」
+
