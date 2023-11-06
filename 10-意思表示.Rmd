@@ -1,6 +1,80 @@
 
 # 意思表示
 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(htmltools)
+library(shiny)
+```
+
+
+```{r}
+s <- function(data, columnNames = colnames(data), cellFormatting = NULL, tableStyle = NULL) {
+  print(data)  # Add this line to check the data being passed to the function
+  withTags({
+    table(
+      class = "custom-table", 
+      if (!is.null(tableStyle)) {
+        tableStyle
+      },
+      thead(
+        tr(
+          lapply(columnNames, function(colName) {
+            th(colName)
+          })
+        )
+      ),
+      tbody(
+        apply(data, 1, function(row) {
+          tr(
+            lapply(row, function(cell, index) {
+              if (!is.null(cellFormatting) && length(cellFormatting) >= index) {
+                cell <- cellFormatting[[index]](cell)
+              }
+              td(cell)
+            })
+          )
+        })
+      )
+    )
+  })
+}
+
+```
+
+
+
+```{r}
+data <- data.frame(
+  Name = c("John", "Alice", "Bob"),
+  Age = c(30, 25, 35),
+  Salary = c(50000, 60000, 55000)
+)
+
+DT::datatable(data)
+```
+
+
+
+
+```{r,echo=FALSE}
+tags$table(
+  list(
+  tags$tr(
+    tags$th("有體物"),
+    tags$th("無體物")
+  ),
+  tags$tr(
+    tags$td("有一定之外觀"),
+    tags$td("無一定之外行")
+  )
+  )
+)
+
+```
+
+
 ### 民§153
 
 > 當事人互相表示意思一致者，無論其為明示或默示，契約即為成立。<br>
