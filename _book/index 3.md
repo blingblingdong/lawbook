@@ -1,7 +1,7 @@
 --- 
-title: "💸💸💸💸"
+title: "民事法手冊"
 author: "董宸賓"
-date: "`r Sys.Date()`"
+date: "2024-03-11"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
